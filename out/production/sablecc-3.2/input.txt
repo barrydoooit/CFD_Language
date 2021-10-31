@@ -1,0 +1,46 @@
+standard_color = #66ccff;
+
+>circularA{
+    class: Rectangle;
+    border: 10, standard_color;
+    position: (0,0);
+    size: (100,150);
+};
+
+pointStart = (0,0);
+allPoints = pointStart, (50, 90), pointStart;
+>polygonB{
+    class: Polygon;
+    points: allPoints;
+    position: (0, 10);
+    border: 2, standard_color;
+};
+
+new_color = #223344;
+
+movement = (+200, +100);
+sss = (+50, +50);
+
+.combinedA{
+    defineSize=sss;
+    >${
+        class: circularA;
+        position: movement;
+        size: sss;
+        color: #333333;
+        border: 10, #6c419f;
+    };
+    .${
+        class: polygonB;
+        position: movement;
+    };
+};
+newmove = (-50, +200);
+
+>combinedB{
+    >${
+        class: combinedA;
+        position: newmove;
+        border: 20, #345678;
+    };
+};

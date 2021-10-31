@@ -1,0 +1,19 @@
+.figure1{
+class: Polygon;
+position: (10, 20);
+color: #66ccff;
+points: (20,30),(40,50),(40,2),(30,10),(20,30);
+border: 1, #66ccff;
+};
+>figure2{
+ >fig2_1{
+ class: figure1;
+ position: (+20, +100);
+ color: #3356ef;
+ size: (+60, +30);
+ };
+ >fig2_2{
+ class: figure1;
+ position: ( ,-13);
+};
+};

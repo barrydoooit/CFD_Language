@@ -1,0 +1,28 @@
+
+.figure1{
+    class: Square;
+    position: (10, 20);
+    color: #66ccff;
+    points: (2,3),(4,5),(4,2),(3,1),(2,3);
+    border: 1, #66ccff;
+};
+standardcolor = #66ccff;
+>figure2{
+    >fig2_1{
+        class: figure1;
+        position: (+10, );
+        color: #333333;
+    };
+    .fig2_2{
+        class: figure1;
+        position: ( ,-10);
+    };
+    >fig2_3{
+        class: Circle;
+        size: (15, 10);
+        position: (5, 20);
+    };
+};
+>figure3{
+    class: figure2;
+};

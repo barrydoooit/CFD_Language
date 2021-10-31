@@ -1,0 +1,7 @@
+public Variable.VarType getNodeType(){
+        return this.variable.getVarType();
+    }
+    public void setNodeType(Variable.VarType type){
+        this.variable.setVarType(type);
+    }
+    public Variable variable=new Variable();

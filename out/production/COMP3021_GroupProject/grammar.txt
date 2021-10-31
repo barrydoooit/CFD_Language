@@ -1,0 +1,86 @@
+Package drawlang;
+
+
+
+Helpers
+lc_letter = ['a'..'z'];
+uc_letter = ['A'..'Z'];
+digit = ['0'..'9'];
+letter = lc_letter | uc_letter;
+underline = '_';
+hashmark = '#';
+lc_hexletter = ['a'..'f'];
+uc_hexletter = ['A'..'F'];
+hexletter = lc_hexletter | uc_hexletter;
+hexdigit = digit | hexletter;
+
+Tokens
+        keywordclass = 'class';
+        keywordcolor = 'color';
+        keywordposition = 'position';
+        keywordborder = 'border';
+        keywordsize = 'size';
+        keywordpoints = 'points';
+        hexcolor = hashmark hexdigit hexdigit hexdigit hexdigit hexdigit hexdigit;
+        number = digit+;
+        keywordcircle = 'Circle';
+        keywordrect = 'Rectangle';
+        keywordpoly = 'Polygon';
+        identifier =   letter(letter | digit | underline)*;
+        dollarsign = '$';
+        l_brace = '{';
+        r_brace = '}';
+        l_brk = '(';
+        r_brk = ')';
+        opsemicolon = ';';
+        opcolon = ':';
+        opcomma = ',';
+        opequal = '=';
+        opplus = '+';
+        opminus = '-';
+        opdot = '.';
+        opleftangle = '>';
+        blank = (' ' | 13 | 10)+;
+
+
+Ignored Tokens
+ blank;
+
+Productions 
+ program = {list} statementlist;
+
+ statementlist = {stmt} statement | {stmtlist} statement statementlist;
+
+ statement = {obj} object | {cmd} command;
+ 
+ object  =  displayop objectidentifier l_brace contentlist r_brace opsemicolon;
+ objectidentifier = {explicit} identifier | {implicit} dollarsign;
+ displayop = {display} opleftangle | {hidden} opdot;
+
+ command = identifier opequal attributevalues opsemicolon;
+
+ contentlist = {attrlist} attributelist  | {objlist}  statementlist;
+
+ attributelist = {attr} attribute | {attrlist} attribute attributelist;
+
+ attribute =  attributename opcolon attributevalues opsemicolon;
+
+ attributename = {keywordclass} keywordclass | {keywordcolor} keywordcolor | {keywordposition} keywordposition | {keywordborder} keywordborder | {keywordsize} keywordsize | {keywordpoints} keywordpoints;
+
+ attributevalues = {attributevalue} attributevalue | {attributelist} attributevalues opcomma attributevalue;
+
+ attributevalue = {variablevalue} identifier | {numericvalue} numeric | {hexcolorvalue} hexcolor | {keywordvalue} keywordclasstype | {pairwisevalue} pairwise;
+
+ keywordclasstype = {keywordcircle} keywordcircle | {keywordrect} keywordrect | {keywordpoly} keywordpoly;
+
+ pairwise = l_brk [first] : pairvalue opcomma [second] : pairvalue r_brk;
+
+ pairvalue = {empty} | {numericpairvalue} numeric | {variablepairvalue} identifier;
+
+ numeric = {unsigned} number | {signed} sign number;
+
+ sign = {opsign} opplus | {misign} opminus;
+
+
+
+

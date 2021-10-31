@@ -1,0 +1,7 @@
+>${
+    class: Circle;
+    position: (100, 100);
+    size: (150, 100);
+    border: 10, #556677;
+    color: #ffffff;
+};

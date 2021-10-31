@@ -1,0 +1,139 @@
+anchorPos = (10, 20);
+.staveLine{
+    class: Polygon;
+    position: anchorPos;
+    points: (0, 0), (400, 0);
+    border: 2, #000000;
+};
+nextLine = (,+15);
+.stave{
+    >line1{
+        class: staveLine;
+        position: nextLine;
+    };
+    >line2{
+        class: line1;
+        position: nextLine;
+    };
+    >line3{
+        class: line2;
+        position: nextLine;
+    };
+    >line4{
+        class: line3;
+        position: nextLine;
+    };
+    >line5{
+        class: line4;
+        position: nextLine;
+    };
+};
+
+nextStave = ( , +100);
+>staves{
+    >stave1{
+        class: stave;
+    };
+    >stave2{
+        class: stave1;
+        position: nextStave;
+    };
+    >stave3{
+        class: stave2;
+        position: nextStave;
+    };
+   >stave4{
+        class: stave3;
+        position: nextStave;
+    };
+};
+
+noteColor = #DF73E5;
+.musicalNote{
+    >${
+        class: Rectangle;
+        size: (2, 30);
+        border: 0;
+        color: noteColor ;
+    };
+    >${
+        class: Circle;
+        size: (25, 15);
+        border: 1;
+        color: noteColor;
+        position: (, +20);
+    };
+};
+startingPos = (20, 8);
+up1=-8; up2=-15; up3=-23; up4=-30; up5=-38; up6=-45; up7=-53; up8=-60;
+down1=+7; down2=+15; down3=+22; down4=+30; down5=+37; down6=+45; down7=+52; down8=+60;
+longNote = +80;
+nextNote = +40;
+longNoteColor = #66ccff;
+>firstTwo{
+    .high_fa{
+        class: musicalNote;
+        position: startingPos;
+    };
+    >composeFirstLine{
+        >mih1{
+            class: high_fa;
+            position: (nextNote , down1);
+        };
+        >re1{
+            class: mih1;
+            position: (nextNote , down1);
+        };
+        >do1{
+            class: re1;
+            position: (nextNote , down1);
+            color: longNoteColor;
+        };
+        >do2{
+            class: do1;
+            position: (longNote, );
+            color: noteColor;
+        };
+        >la1{
+            class: do2;
+            position: (nextNote , down2);
+        };
+        >so1{
+            class: la1;
+            position: (nextNote , down1);
+            color: longNoteColor;
+        };
+    };
+    .secondHigh_fa{
+        class: high_fa;
+        position: nextStave;
+    };
+    >composeSecondLine{
+         >so1{
+            class: secondHigh_fa;
+            position: (nextNote , down6);
+        };
+        >mil1{
+            class: so1;
+            position: (nextNote , down1);
+        };
+        >mih1{
+            class: mil1;
+            position: (nextNote , up7);
+        };
+        >re1{
+            class: mih1;
+            position: (nextNote, down1);
+        };
+        >do1{
+            class: re1;
+            position: (nextNote , down1);
+            color: #D34D34;
+        };
+    };
+};
+
+>repeat{
+    class: firstTwo;
+    position: (, +200);
+};

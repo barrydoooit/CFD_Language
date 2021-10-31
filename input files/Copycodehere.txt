@@ -1,0 +1,28 @@
+line_color = #66ccff;
+allPoints = (0,0), (50, 90), (70,200), (200, 50);
+>shrink_and_enlarge{
+    .taskin51{
+        class: Polygon;
+        points: allPoints;
+        position: (50, 50);
+        border: 10, line_color;
+        color: #D34D34;
+    };
+    >shrinked{
+        class: taskin51;
+        size: (-100, -100);
+        color: #27BD67;
+    };
+    >enlarged{
+        class: taskin51;
+        position: (50, 150);
+        size: (+100, +100);
+        border: +10, #DF73E5;
+    };
+};
+>moved{
+    class: shrink_and_enlarge;
+    position: (+250, );
+    border: +10, #DF73E5;
+    color: #ffffff;
+};

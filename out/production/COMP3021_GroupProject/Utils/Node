@@ -1,0 +1,5 @@
+//this is the code to be pasted on the bottom of node.java inside the class
+public Variable.VarType getNodeType(){
+        return this.variable.getVarType();
+    }
+    public Variable variable=new Variable();
